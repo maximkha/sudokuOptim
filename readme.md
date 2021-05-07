@@ -1,12 +1,12 @@
 # SudokuOptim
 
-This project solves a sudoku board using numerical optimization.
+This project solves a Sudoku board using numerical optimization.
 
 ### Motivations
 
 This approach is compatible with DWave quantum computers, and by proxy IBM quantum computers and could be used to solve sudoku using quantum computers. This serves as a showcase of reformulating problems into different forms so that they may be solved using different and more optimal methods. This also helped me understand [metaprogramming](https://docs.julialang.org/en/v1/manual/metaprogramming/) in [Julia](https://julialang.org). I have been learning many programming languages including C#, Python, C++, Java, Javascript, however metaprogramming is a feature that is unique to Julia and really interesting and refreshing.
 
-### Implementation
+### Explanation
 
 This section will discuss the implementation of the algorithm.
 
@@ -63,4 +63,14 @@ However, since most numerical optimization methods don’t work for integer para
 
 $f(a,b,c,d,e\dots)=\\(a+b+c+d-10)^2\\+((a+b+c+d)^2-10^2)^2\\\vdots\\+((a+b+c+d)^4-10^4)^2$
 
-If you do this for all the rows, columns, and 2x2 blocks, there would be more than enough constraints than variables, meaning that all the 
+If you do this for all the rows, columns, and 2x2 blocks, there would be more than enough constraints than variables, meaning that all the problem will only have one solution (specifically the integer one that we want).
+
+### **Implementation**
+
+When I started working on a solution I initially wanted to use Python, however, I realized if I used Julia (a new programming language that supports metaprogramming) not only would I not have to write repetitive code, I would also be able to have variable sized boards for free! The basic structure of the program constructs all the constrains for rows columns and blocks by appending operations and variables to an expression object.
+
+### **Result**
+
+This is obviously not a good way to solve Sudoku on a classical computer, however, this method can be transcribed into a [QUBO](https://medium.com/mdr-inc/quadratic-unconstrained-binary-optimization-qubo-on-dwave-chimera-graph-part-1-a7eb05e3f155) and solved by not only a general purpose quantum computer, but also a sub class of quantum computers which operate on the principal of [quantum annealing](https://en.wikipedia.org/wiki/Quantum_annealing). For a classical computer, this method works well for  $4\times4$  Sudoku boards, however, for anything bigger it usually fails to converge. 
+
+*Note: if translated into a QUBO or similar form, the computer will have an innate quant and no extra constraints are needed to keep the solutions integers*
