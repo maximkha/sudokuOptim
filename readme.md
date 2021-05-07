@@ -2,6 +2,8 @@
 
 This project solves a Sudoku board using numerical optimization.
 
+**To see the LaTeX open readme.pdf**
+
 ### Motivations
 
 This approach is compatible with DWave quantum computers, and by proxy IBM quantum computers and could be used to solve sudoku using quantum computers. This serves as a showcase of reformulating problems into different forms so that they may be solved using different and more optimal methods. This also helped me understand [metaprogramming](https://docs.julialang.org/en/v1/manual/metaprogramming/) in [Julia](https://julialang.org). I have been learning many programming languages including C#, Python, C++, Java, Javascript, however metaprogramming is a feature that is unique to Julia and really interesting and refreshing.
